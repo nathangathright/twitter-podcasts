@@ -12,14 +12,15 @@ function contains(selector, text) {
 }
 
 function getEmbeddable(link) {
+  let src= "";
   let hostname = new URL(link).hostname;
   switch (hostname) {
     case "podcasts.apple.com":
-      let src = link.replace('podcasts.apple.com', 'embed.podcasts.apple.com');
+      src = link.replace('podcasts.apple.com', 'embed.podcasts.apple.com');
       updateIframe(src, "479px", "432px");      
       break;
     case "open.spotify.com":
-      let src = link.replace('open.spotify.com', 'spotify.com/embed/');
+      src = link.replace('open.spotify.com', 'spotify.com/embed/');
       updateIframe(src, "480px", "232px");
     default:
       break;

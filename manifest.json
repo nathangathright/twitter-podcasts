@@ -4,12 +4,9 @@
   "description": "An MVP of a Twitter Podcasts extension",
   "version": "0.0.1",
   "icons": {
-    "128": "logo/icon-light.png"
+    "128": "logo/icon-blue.png"
   },
-  "action": {
-    "default_title": "Twitter Podcasts",
-    "default_popup": "popup/popup.html"
-  },
+  "action": {},
   "permissions": [
       "activeTab",
       "scripting"
