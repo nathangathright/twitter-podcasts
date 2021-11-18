@@ -11,13 +11,22 @@ function contains(selector, text) {
   });
 }
 
+function getEmbeddable(link) {
+  return link.replace('spotify.com/', 'spotify.com/embed/');
+}
+
 function enrich() {
-  const podcastLinks = contains("a", "podcasts.apple.com|apple.co|open.spotify.com|spoti.fi|podcasts.google.com");
+  // const podcastLinks = contains("a", "podcasts.apple.com|apple.co|open.spotify.com|spoti.fi|podcasts.google.com");
+  const podcastLinks = contains('a', "open.spotify.com/");
 
   podcastLinks.map((link) => {
     link.href = (link.innerText.includes('…')) ? link.innerText.slice(0, -1) : link.innerText;
     link.setAttribute("data-podcast-link", link.href);
     link.innerText = "▶️ Listen Now";
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log(getEmbeddable(event.target.href));
+    });
   });
 }
 
@@ -29,7 +38,6 @@ if (document.readyState === 'loading') {
 
 function afterDOMLoaded() {
   setInterval(() => {
-    console.log('afterDOMLoaded');
     enrich();
   }, 1000);
 }
