@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Podcasts",
+  "description": "An MVP of a Twitter Podcasts extension",
+  "version": "0.0.1",
+  "icons": {
+    "128": "logo/icon-light.png"
+  },
+  "action": {
+    "default_title": "Twitter Podcasts",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["foreground.js"],
+      "css": ["shiny.css"],
+      "matches": ["https://twitter.com/*"]
+    },
+    {
+      "js": ["toggleIcon.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
