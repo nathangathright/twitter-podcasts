@@ -12,16 +12,24 @@ function contains(selector, text) {
 }
 
 function enrich() {
-  const podcastLinks = contains("a", "podcasts.google.com|podcasts.apple.com");
+  const podcastLinks = contains("a", "podcasts.apple.com|apple.co|open.spotify.com|spoti.fi|podcasts.google.com");
 
   podcastLinks.map((link) => {
-    link.href = link.innerText.slice(0, -1);
+    link.href = (link.innerText.includes('…')) ? link.innerText.slice(0, -1) : link.innerText;
     link.setAttribute("data-podcast-link", link.href);
     link.innerText = "▶️ Listen Now";
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  console.log('DOMContentLoaded');
-  enrich();
-});
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', afterDOMLoaded);
+} else {
+  afterDOMLoaded();
+}
+
+function afterDOMLoaded() {
+  setInterval(() => {
+    console.log('afterDOMLoaded');
+    enrich();
+  }, 1000);
+}
