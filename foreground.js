@@ -4,11 +4,26 @@
 // Several foreground scripts can be declared
 // and injected into the same or different pages.
 
-function contains(selector, text) {
-  const elements = document.querySelectorAll(selector);
-  return Array.prototype.filter.call(elements, function (element) {
-    return RegExp(text).test(element.textContent);
-  });
+function destroyIframe() {
+  const iframe = document.getElementById('floating-iframe');
+  if (iframe) {
+    iframe.parentNode.removeChild(iframe);
+  }
+}
+
+function createIframe(src = "", width = "0px", height = "0px") {
+  destroyIframe()
+  const iframe = document.createElement('iframe');
+  iframe.setAttribute('id', 'floating-iframe');
+  iframe.setAttribute('scrolling', 'no');
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allowtransparency', 'true');
+  iframe.setAttribute('allow', 'encrypted-media');
+  iframe.setAttribute('style', "overflow:hidden;position:fixed;bottom:20px;right:20px;max-width:calc(100% - 40px)");
+  iframe.setAttribute('src', src);
+  iframe.setAttribute('width', width);
+  iframe.setAttribute('height', height);
+  document.body.appendChild(iframe);
 }
 
 function getEmbeddable(link) {
@@ -53,26 +68,11 @@ function getEmbeddable(link) {
   } 
 }
 
-function destroyIframe() {
-  const iframe = document.getElementById('floating-iframe');
-  if (iframe) {
-    iframe.parentNode.removeChild(iframe);
-  }
-}
-
-function createIframe(src = "", width = "0px", height = "0px") {
-  destroyIframe()
-  const iframe = document.createElement('iframe');
-  iframe.setAttribute('id', 'floating-iframe');
-  iframe.setAttribute('scrolling', 'no');
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('allowtransparency', 'true');
-  iframe.setAttribute('allow', 'encrypted-media');
-  iframe.setAttribute('style', "overflow:hidden;position:fixed;bottom:20px;right:20px;max-width:calc(100% - 40px)");
-  iframe.setAttribute('src', src);
-  iframe.setAttribute('width', width);
-  iframe.setAttribute('height', height);
-  document.body.appendChild(iframe);
+function contains(selector, text) {
+  const elements = document.querySelectorAll(selector);
+  return Array.prototype.filter.call(elements, function (element) {
+    return RegExp(text).test(element.textContent);
+  });
 }
 
 function enrich() {
