@@ -25,7 +25,7 @@ function getEmbeddable(link) {
       else {
         createIframe(
           link.replace('podcasts.apple.com', 'embed.podcasts.apple.com'),
-          "479px",
+          "320px",
           "432px"
         )
       }
