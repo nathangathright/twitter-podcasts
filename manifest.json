@@ -8,21 +8,14 @@
   },
   "action": {},
   "permissions": [
-      "activeTab",
-      "scripting"
-    ],
-  "background": {
-    "service_worker": "service-worker.js"
-  },
+    "activeTab",
+    "scripting"
+  ],
   "content_scripts": [
     {
       "js": ["foreground.js"],
       "css": ["shiny.css"],
       "matches": ["https://twitter.com/*"]
-    },
-    {
-      "js": ["toggleIcon.js"],
-      "matches": ["<all_urls>"]
     }
   ]
 }

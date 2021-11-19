@@ -7,12 +7,19 @@
 Have you ever wanted to listen to podcasts as you scroll Twitter? This Chrome extension transforms normal podcast links into buttons that launch a persistent floating audio player.
 
 ## Features
-Currently support Apple Podcasts and Spotify links.
+Currently supports a small handful of embeddable players. Pull requests welcome!
+
+#### Platforms
+- podcasts.apple.com/
+- open.spotify.com/
+
+#### Hosts
+- share.transistor.fm/
 
 ## Roadmap
 Desired features that I'd appreciate help with:
 - Overcast player (need Marco to fix his X-Frame-Options)
-- Host players (Simplecast, Transistor, Captivate)
+- [Host players](https://www.podcastinsights.com/podcast-embed-players/)
 - Exanding shortlinks to fetch platform players 
 - Parse pod.link URLs to fetch platform players
 - Handle other podcast links with video.js
