@@ -71,6 +71,13 @@ function getEmbeddable(link) {
         "480px",
         "200px"
       );
+    case "megaphone.link":
+      let regex = /megaphone.link\/(.+)/;
+      createIframe(
+        link.replace(regex, 'player.megaphone.fm/$1'),
+        "480px",
+        "200px"
+      );
     default:
       break;
   } 
@@ -84,7 +91,7 @@ function contains(selector, text) {
 }
 
 function enrich() {
-  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/|buzzsprout.com/|anchor.fm\/([^\/]+)\/episodes");
+  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/|buzzsprout.com/|anchor.fm\/([^\/]+)\/episodes|megaphone.link/");
 
   podcastLinks.map((link) => {
     let newhref = (link.innerText.includes('…')) ? link.innerText.slice(0, -1) : link.innerText;
