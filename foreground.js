@@ -42,6 +42,12 @@ function getEmbeddable(link) {
         "480px",
         "180px"
       );
+    case "anchor.fm":
+      createIframe(
+        link.replace('/episodes/', '/embed/episodes/'),
+        "480px",
+        "102px"
+      );
     default:
       break;
   } 
@@ -58,10 +64,11 @@ function createIframe(src = "", width = "0px", height = "0px") {
   destroyIframe()
   const iframe = document.createElement('iframe');
   iframe.setAttribute('id', 'floating-iframe');
+  iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('frameborder', '0');
   iframe.setAttribute('allowtransparency', 'true');
   iframe.setAttribute('allow', 'encrypted-media');
-  iframe.setAttribute('style', "position:fixed;bottom:20px;right:20px;max-width:calc(100% - 40px)");
+  iframe.setAttribute('style', "overflow:hidden;position:fixed;bottom:20px;right:20px;max-width:calc(100% - 40px)");
   iframe.setAttribute('src', src);
   iframe.setAttribute('width', width);
   iframe.setAttribute('height', height);
@@ -69,8 +76,7 @@ function createIframe(src = "", width = "0px", height = "0px") {
 }
 
 function enrich() {
-  // const podcastLinks = contains("a", "podcasts.apple.com/|apple.co/|open.spotify.com/|spoti.fi/|podcasts.google.com/");
-  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/s/");
+  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/s/|anchor.fm\/([^\/]+)\/episodes");
 
   podcastLinks.map((link) => {
     let newhref = (link.innerText.includes('…')) ? link.innerText.slice(0, -1) : link.innerText;
