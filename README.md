@@ -1,7 +1,7 @@
 <div align="center">
     <img src="logo/icon-blue.png"/>
     <h1>Twitter Podcasts</h1>
-    <h3>Enhacing podcast links on Twitter.com</h3>
+    <h3>Enhancing podcast links on Twitter.com</h3>
 </div>
 
 Have you ever wanted to listen to podcasts as you scroll Twitter? This Chrome extension transforms normal podcast links into buttons that launch a persistent floating audio player.
