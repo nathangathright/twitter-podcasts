@@ -9,8 +9,12 @@
   "action": {},
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "<all_urls>"
   ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
   "content_scripts": [
     {
       "js": ["foreground.js"],

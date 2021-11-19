@@ -117,3 +117,10 @@ function afterDOMLoaded() {
     enrich();
   }, 1000);
 }
+
+
+chrome.runtime.sendMessage(
+  {contentScriptQuery: 'fetchUrl',
+   url: 'https://another-site.com/price-query?itemId=' +
+            encodeURIComponent(request.itemId)},
+  response => parsePrice(response.text()));
