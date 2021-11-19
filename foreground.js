@@ -63,6 +63,14 @@ function getEmbeddable(link) {
         "480px",
         "102px"
       );
+    case "buzzsprout.com":
+      let url = new URL(link);
+      url.searchParams.append('player_type', 'full_screen');
+      createIframe(
+        url,
+        "480px",
+        "200px"
+      );
     default:
       break;
   } 
@@ -76,7 +84,7 @@ function contains(selector, text) {
 }
 
 function enrich() {
-  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/s/|anchor.fm\/([^\/]+)\/episodes");
+  const podcastLinks = contains('a', "podcasts.apple.com/|open.spotify.com/|share.transistor.fm/|buzzsprout.com/|anchor.fm\/([^\/]+)\/episodes");
 
   podcastLinks.map((link) => {
     let newhref = (link.innerText.includes('…')) ? link.innerText.slice(0, -1) : link.innerText;
